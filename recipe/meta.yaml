@@ -12,9 +12,11 @@ source:
     - fix_dll_installation.patch
 
 build:
-  number: 0
+  number: 1
+  # The shared library SONAME embeds the full version (libsrtp2.so.2.8.1),
+  # so dependents must be pinned to the exact patch release.
   run_exports:
-    - {{ pin_subpackage('libsrtp2', max_pin='x.x') }}
+    - {{ pin_subpackage('libsrtp2', max_pin='x.x.x') }}
 
 requirements:
   build:
